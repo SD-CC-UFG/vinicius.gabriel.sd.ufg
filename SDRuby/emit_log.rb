@@ -16,14 +16,6 @@ queue = channel.queue('', exclusive: true)
 
 queue.bind(exchange)
 
-argvMessage.empty? ? puts(wrn1) : puts(wrn1)
-
-message = argvMessage.empty? ? (argvMessage = gets) : argvMessage
-
-newMessage = "[#{name}] #{message}"
-
-exchange.publish(newMessage)
-
 Thread.new{
   begin
     queue.subscribe(block: true) do |_delivery_info, _properties, body|
@@ -34,6 +26,14 @@ Thread.new{
     connection.close
   end
 }
+
+argvMessage.empty? ? puts(wrn1) : puts(wrn1)
+
+message = argvMessage.empty? ? (argvMessage = gets) : argvMessage
+
+newMessage = "[#{name}] #{message}"
+
+exchange.publish(newMessage)
 
 while !(message.include? "exit")
 
