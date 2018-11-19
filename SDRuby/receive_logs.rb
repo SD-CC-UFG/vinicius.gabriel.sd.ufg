@@ -15,8 +15,8 @@ puts ' [*] Waiting for logs. To exit press CTRL+C'
 
 begin
   queue.subscribe(block: true) do |_delivery_info, _properties, body|
-    puts " [x] #{body}"
-    comLogs << " [x] #{body}" << "\n"
+    puts body
+    comLogs << body << "\n"
   end
 rescue Interrupt => _
   channel.close

@@ -1,30 +1,48 @@
 require 'bunny'
 
-wrn1 = "You can pass the logs now or when executing pass it as parameters. :)"
+wrn1 = ":)"
 
 connection = Bunny.new
 connection.start
+
+puts "Insert name: "
+name = gets.chomp
 
 argvMessage = ARGV.join(' ')
 
 channel = connection.create_channel
 exchange = channel.fanout('logs')
+queue = channel.queue('', exclusive: true)
 
-argvMessage.empty? ? puts(wrn1) : print("\n")
+queue.bind(exchange)
+
+argvMessage.empty? ? puts(wrn1) : puts(wrn1)
 
 message = argvMessage.empty? ? (argvMessage = gets) : argvMessage
 
-exchange.publish(message)
+newMessage = "[#{name}] #{message}"
 
-puts " [x] Sent #{message}"
+exchange.publish(newMessage)
+
+Thread.new{
+  begin
+    queue.subscribe(block: true) do |_delivery_info, _properties, body|
+      puts body
+    end
+  rescue Interrupt => _
+    channel.close
+    connection.close
+  end
+}
 
 while !(message.include? "exit")
 
-  message = gets
+  message = gets.chomp
 
-  exchange.publish(message)
+  newMessage = "[#{name}] #{message}"
 
-  puts " [x] Sent #{message}"
+  exchange.publish(newMessage)
+
 
 end
 
