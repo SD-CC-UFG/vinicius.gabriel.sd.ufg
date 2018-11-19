@@ -1,11 +1,12 @@
 require 'bunny'
 
-comLogs = File.open('com.logs','a')
+comLogs = File.open('logs/com.logs','a')
 
 connection = Bunny.new
 connection.start
 
 channel = connection.create_channel
+
 exchange = channel.fanout('logs')
 queue = channel.queue('', exclusive: true)
 
