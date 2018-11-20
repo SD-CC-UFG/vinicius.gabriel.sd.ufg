@@ -1,0 +1,43 @@
+ ----------- Channel -- 1 ----------- 
+[usr2] oi
+
+[usr1] oi
+
+[usr1] tudo bem
+[usr2] batata
+[usr2] exit
+ ----------- Channel -- 1 ----------- 
+[usr2] oi
+
+[usr1] oi
+
+[usr1] tudo bem
+[usr2] batata
+[usr2] exit
+[usr1] exit
+ ----------- Channel -- 2 ----------- 
+[usr4] oi
+
+[usr3] oi
+
+[usr4] exit
+ ----------- Channel -- 2 ----------- 
+[usr4] oi
+
+[usr3] oi
+
+[usr4] exit
+[usr3] exit
+ ----------- Channel -- 1 ----------- 
+[usr2] oi
+
+[usr1] oi
+
+[usr2] exit
+ ----------- Channel -- 1 ----------- 
+[usr2] oi
+
+[usr1] oi
+
+[usr2] exit
+[usr1] exit

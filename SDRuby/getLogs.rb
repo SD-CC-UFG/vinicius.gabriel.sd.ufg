@@ -12,7 +12,7 @@ queue = channel.queue('', exclusive: true)
 
 queue.bind(exchange)
 
-puts ' [*] Waiting for logs. To exit press CTRL+C'
+puts 'Waiting for logs. To exit press CTRL+C'
 
 begin
   queue.subscribe(block: true) do |_delivery_info, _properties, body|
