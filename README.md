@@ -7,3 +7,4 @@ The main focus of this repository is to learn basic and most important topics ra
 - logs - Communication logs
 - SDRuby - Simple Publish-Subscribe systems using channels
 - Basic - Simple communication utilizing Client-Server
+- **Trab Final** - **Trabalho Final da Disciplina**
